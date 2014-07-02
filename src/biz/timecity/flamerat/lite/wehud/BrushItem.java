@@ -11,9 +11,10 @@ public class BrushItem {
 	private BrushMode brushMode;
 	private int itemId;
 	private int blockId;
-	private boolean isHollow=false;
-	private boolean isWithoutAir=false;
-	private boolean isNatural=false;
+	/**
+	 * = isHollow, isWithoutAir, isNatural
+	 */
+	private boolean bol_1=false;
 	private int radius;
 	private int height=0;
 	
@@ -66,14 +67,14 @@ public class BrushItem {
 	 * @return whether the brush is hollow
 	 */
 	public boolean IsHollow(){
-		return isHollow;
+		return bol_1;
 	}
 	/**
 	 * 
 	 * @param is whether the brush is hollow
 	 */
 	public void SetHollow(boolean is){
-		isHollow=is;
+		bol_1=is;
 	}
 	
 	/**
@@ -81,14 +82,14 @@ public class BrushItem {
 	 * @return whether the brush pastes air
 	 */
 	public boolean IsWithoutAir(){
-		return isWithoutAir;
+		return bol_1;
 	}
 	/**
 	 * 
 	 * @param is whether the brush pastes air
 	 */
 	public void SetWithoutAir(boolean is){
-		isWithoutAir=is;
+		bol_1=is;
 	}
 	
 	/**
@@ -96,14 +97,14 @@ public class BrushItem {
 	 * @return whether the brush only interact natural terrain
 	 */
 	public boolean IsNatural(){
-		return isNatural;
+		return bol_1;
 	}
 	/**
 	 * 
 	 * @param is whether the brush only interact natural terrain
 	 */
 	public void SetNatural(boolean is){
-		isNatural=is;
+		bol_1=is;
 	}
 	
 	/**

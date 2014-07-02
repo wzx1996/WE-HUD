@@ -18,11 +18,15 @@ public final class WeState {
 	public enum BrushMode{
 		EX,SMOOTH,CYLINDER,BUTCHER,SPHERE,CLIPBOARD,GRAVITY
 	}
+	public enum MiscToolMode{
+		TREE,DELTREE,REPL,FARWAND,CYCLER,INFO,FLOODFILL
+	}
 	
 	private WandMode wandMode;
 	private String brushMask;
 	private LinkedList<BrushItem> brushItems;
 	private LinkedList<LrbuildItem> lrbuildItems;
+	private LinkedList<MiscToolItem> miscToolItems;
 	
 	/**
 	 * 
@@ -69,6 +73,13 @@ public final class WeState {
 		return null;
 	}
 	/**
+	 * add a brush state of an item
+	 * @param bItem the formatted tool state
+	 */
+	public void AddBrushItem(BrushItem bItem){
+		brushItems.add(bItem);
+	}
+	/**
 	 * delete the brush state of an item
 	 * @param id the item id
 	 */
@@ -99,6 +110,13 @@ public final class WeState {
 		return null;
 	}
 	/**
+	 * add a lrbuild wand state of an item
+	 * @param bItem the formatted tool state
+	 */
+	public void AddLrbuildItem(LrbuildItem bItem){
+		lrbuildItems.add(bItem);
+	}
+	/**
 	 * delete the lrbuild wand state of an item
 	 * @param id the item id
 	 */
@@ -107,6 +125,43 @@ public final class WeState {
 			LrbuildItem bItem=lrbuildItems.get(i);
 			if(id==bItem.GetItemId()){
 				lrbuildItems.remove(i);
+				return;
+			}
+		}
+		LiteModWeHud.WriteLog(Level.WARN,"id"+id+"is not a lrbuild wand!");
+		return;
+	}
+	
+	/**
+	 * use item id to search whether it is used as a tool
+	 * @param id the item id
+	 * @return the brush item class if found, or null if the item is not used as a tool
+	 */
+	public MiscToolItem GetMiscToolItem(int id){
+		for(int i=0;i<(miscToolItems.size());i++){
+			MiscToolItem bItem=miscToolItems.get(i);
+			if(id==bItem.GetItemId()){
+				return bItem;
+			}
+		}
+		return null;
+	}
+	/**
+	 * add a brush state of an item
+	 * @param bItem the formatted tool state
+	 */
+	public void AddMiscToolItem(MiscToolItem bItem){
+		miscToolItems.add(bItem);
+	}
+	/**
+	 * delete the tool state of an item
+	 * @param id the item id
+	 */
+	public void DeleteMiscToolItem(int id){
+		for(int i=0;i<(miscToolItems.size());i++){
+			MiscToolItem bItem=miscToolItems.get(i);
+			if(id==bItem.GetItemId()){
+				miscToolItems.remove(i);
 				return;
 			}
 		}
